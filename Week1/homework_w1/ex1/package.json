@@ -1,0 +1,14 @@
+{
+  "name": "homework_w1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex1_ Create and insert queries.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
