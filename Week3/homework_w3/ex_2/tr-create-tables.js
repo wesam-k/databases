@@ -37,4 +37,6 @@ async function newTables() {
   connection.end();
 }
 
+
+
 newTables();
