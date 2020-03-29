@@ -1,0 +1,10 @@
+countryGreater8M: 'SELECT name, population From country WHERE  population > 8 million',
+   countryWithLandName: 'SELECT name, From country WHERE  name like "%land%"',
+   cityPop500to1M:  'SELECT name,population From city WHERE population between 500000 and 1 million',
+   countriesInEuropa: 'SELECT name, From country WHERE  continent = "Europe"',
+   countriesInEuropa: 'SELECT name,SurfaceArea From country WHERE SurfaceArea ORDER BY desc',
+   citiesInNL: 'SELECT name,CountryCode From city WHERE  CountryCode = "NLD"',
+   populationOfRotterdam: 'SELECT name,population From city WHERE  name  = "Rotterdam"',
+   top10Countries: 'SELECT name,SurfaceArea From country WHERE SurfaceArea ORDER BY desc limit 10',
+   top10Cities: 'SELECT name,population From city WHERE population ORDER BY desc limit 10',
+   populationOfWorld: 'SELECT SUM(population) From Country'
