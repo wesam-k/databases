@@ -20,7 +20,7 @@ async function findCityByName(client, cityName) {
   const result = await client
     .db("world")
     .collection("city")
-    .findCity({ name: cityName });
+    .find({ name: cityName });
   console.log(`New listing created with the following id: ${result.cityName}`);
 }
 async function findCityByCountryCode(client, CountryCode) {

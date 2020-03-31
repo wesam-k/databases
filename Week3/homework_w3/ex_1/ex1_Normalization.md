@@ -42,14 +42,14 @@
 2- What are the super, candidate, primary keys ?
  - super key are : member_name   | member_address | dinner_id | dinner_date | venue_code | venue_description | food_code |food_description       
  - candidate:  member_id  or member_address | dinner_id or member_address | venue_code
- _ primary keys are: member_i| dinner_id 
+ _ primary keys are: member_id | dinner_id | venue_code
 /-------------------------------------------/
 
 3- What are the potential relationships between different possible tables ?
    
    members table  include   member_id | member_name | member_address
 
-   restaurant  table     include   | dinner_id   | dinner_date | venue_code | venue_description |  
+   restaurant  table     include   | dinner_id   | dinner_date  | venue_description |  
 
    order members table  include member_id | food_code
 /-------------------------------------------/
@@ -58,33 +58,33 @@
 
   to create two tables A,B with primary keys 
   A - members table  include   member_id | member_name | member_address   ( PR key is member_id)
-  B - item table     include   food_code | dinner_id   | dinner_date | venue_code | venue_description | food_description  ( PR key is     food_code )
+  B - item table     include    dinner_id   | dinner_date | venue_code | venue_description | food_code | food_description  ( PR key is     dinner_id  )
 
   
   foreign key reference from the tables to new table C
   C - order members table  include
 ++-----------+-----------
-| member_id | food_code | |
+| member_id | dinner_id | |
 +-----------+-----------+
-|         1 | C1        | 
-|         1 | C2        | 
-|         2 | S1        | 
-|         2 | C2        | 
-|         3 | S1        | 
-|         3 | C2        | 
-|         4 | P1        | 
-|         4 | T1        | 
-|         4 | M1        | 
-|         5 | P1        | 
-|         5 | T1        | 
-|         5 | M1        | 
-|         6 | F1        | 
-|         6 | M1        | 
-|         7 | G1        | 
-|         7 | P2        | 
-|         8 | P1        | 
-|         8 | T1        | 
-|         8 | M1        |
+|         1 | D00001001 | 
+|         1 | D00001001 | 
+|         2 | D00001002 | 
+|         2 | D00001002 |  
+|         3 | D00001002 | 
+|         3 | D00001002 | 
+|         4 | D00001003 | 
+|         4 | D00001003 | 
+|         4 | D00001003 | 
+|         5 | D00001003 | 
+|         5 | D00001003 | 
+|         5 | D00001003 | 
+|         6 | D00001004 | 
+|         6 | D00001004 | 
+|         7 | D00001005 | 
+|         7 | D00001005 | 
+|         8 | D00001003 | 
+|         8 | D00001003 | 
+|         8 | D00001003 |
 +-----------+-----------+
 /------------------------------------------------/
 

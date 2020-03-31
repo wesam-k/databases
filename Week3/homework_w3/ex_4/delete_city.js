@@ -19,8 +19,9 @@ async function deleteCityByName(client, cityName) {
   const result = await client
     .db("world")
     .collection("city")
-    .deleteCity({ name: cityName });
+    .delete({ name: cityName });
   console.log(
     `New listing deleted with the following name: ${result.cityName}`
   );
 }
+

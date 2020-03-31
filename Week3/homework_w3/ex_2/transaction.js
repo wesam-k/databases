@@ -12,16 +12,16 @@ async function transferAmount(fromAccountNum, toAccountNum, totallyAmount) {
 
   try {
     await trans.query(
-      "select account_number from account where account_number = ${fromAccountNum}"
+      `select account_number from account where account_number = ${fromAccountNum}`
     );
     await trans.query(
-      "update account set balance = sum(balance - ${totallyAmount}) where account_number = ${fromAccountNum}"
+      `update account set balance = sum(balance - ${totallyAmount}) where account_number = ${fromAccountNum}`
     );
     await trans.query(
-      "select account_number from account_changes where account_number = ${toAccountNum}"
+      `select account_number from account_changes where account_number = ${toAccountNum}`
     );
     await trans.query(
-      "update account_changes set balance =sum(balance + ${totallyAmount}) where account_number = ${toAccountNum}"
+      `update account_changes set balance =sum(balance + ${totallyAmount}) where account_number = ${toAccountNum}`
     );
 
     await trans.commit();
