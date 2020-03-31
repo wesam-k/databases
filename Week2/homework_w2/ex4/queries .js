@@ -13,31 +13,31 @@ let execQuery = util.promisify(connection.query.bind(connection));
 
 async function selectDatabase() {
   let allRPAndAuthors = `select rp.paper_title,count(distinct a.author_no)
-    from author a 
-    right join relation r
-    on(a.author_no =r.author_no)
+    from authors a 
+    right join authors b
+    on(a.author_no =b.author_no)
     right join research_papers rp
-    on(r.author_no =rp.paper_id)
+    on(b.author_no =rp.paper_id)
     group by re.paper_title`;
 
   let RPByFemale = `select count(distinct rp.paper_title)
-    from author a 
-    right join relation r
-    on(a.author_no =r.author_no)
+    from authors a 
+    right join authors b
+    on(a.author_no =b.author_no)
     right join research_papers rp
-    on(r.author_no =rp.paper_id)
+    on(b.author_no =rp.paper_id)
     where a.author ='f`;
 
   let avgAllAuthors = `select avg(h_index)
-    from author a 
+    from authors a 
     group by a.Affiliations`;
 
   let sumRP = `select a.Affiliations count(distinct rp.paper_title)
-    from author a 
-    right join relation r
-    on(a.author_no =r.author_no)
+    from authors a 
+    right join authors b
+    on(a.author_no =b.author_no)
     right join research_papers rp
-    on(r.author_no =rp.paper_id)
+    on(b.author_no =rp.paper_id)
     group by a.Affiliations`;
 
   let min_max = `select min(a.h_index)

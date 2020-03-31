@@ -12,12 +12,15 @@ let connection = mysql.createConnection({
 let execQuery = util.promisify(connection.query.bind(connection));
 
 async function selectDatabase() {
-  let namesOfAllAuthors = `select a.author_name form authors as A, b.friends from authors as B
-    where  A.author_no =B.friends`;
+  let namesOfAllAuthors = `
+  select a.author_name as author_name from authors A,
+  b.author_name as friends_name from authors B
+  where  A.author_no =B.friends`;
 
-  let authorAndTitle = `select (*),paper_title form authors as A
-    left join relation as R on (a.author_no = r.author_no)       
-    left join research_papers as RP on (r.paper_id = rp.paper_id)`;
+  let authorAndTitle = `
+  select a.author,paper_title form authors as A
+    left join authors as AP on (a.author_no = ap.author_no)       
+    left join research_papers as RP on (ap.paper_id = rp.paper_id);`;
 
   connection.connect();
 

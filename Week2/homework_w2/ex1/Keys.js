@@ -13,7 +13,13 @@ let execQuery = util.promisify(connection.query.bind(connection));
 
 async function seedDatabase() {
   let createTable =
-    " CREATE TABLE IF NOT EXISTS Authors(author_no(Primary Key), author_name, Affiliations, date_of_birth, h_index, gender)";
+    ` CREATE TABLE IF NOT EXISTS Authors(
+      author_no int Primary Key,
+      author_name varchar(30),
+      Affiliations varchar(30),
+      date_of_birth date,
+      h_index int,
+      gender ENUM('m','f'));`;
   let insertColumn = "ALTER TABLE Authors ADD COLUMN friend varcher(20)";
   let forinKey =
     "ALTER TABLE Authors ADD CONSTRAINT fk_authors foreign key (friend) references authors(author_no)";

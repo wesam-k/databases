@@ -24,13 +24,13 @@ async function seedDatabase() {
         publish_date Date ,
         author int,
         constraint fk_authors foreign key(author) references authors(author_no)
-        )`;
+        );`;
   let createAuthorsResearchPaper = `CREATE TABLE IF NOT EXISTS Authors_Research_paper (
         author_no int, paper_id int,
         constraint pk_Authors_Research_paper primary key(author_no, paper_id),
-        constraint fk_Authors_Research_paper foreign key(author_no) reference authors(author_no),
-        constraint fk_Authors_Research_paper foreign key(paper_id) reference research_papers(paper_id),
-         )`;
+        constraint fk_Authors foreign key(author_no) reference authors(author_no),
+        constraint fk_papers foreign key(paper_id) reference research_papers(paper_id),
+         );`;
 
   connection.connect();
 
